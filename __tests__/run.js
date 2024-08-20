@@ -14,6 +14,4 @@ const eva = new Eva();
 
 tests.forEach((test) => test(eva));
 
-eva.eval(["print", "hello", 19]);
-
 console.log("All passed");

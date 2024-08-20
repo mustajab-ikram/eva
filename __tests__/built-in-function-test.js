@@ -8,7 +8,6 @@ module.exports = function (eva) {
   test(eva, `(+ (+ 1 2) 3)`, 6);
   test(eva, `(> 1 2)`, false);
   test(eva, `(> 2 1)`, true);
-  test(eva, `(<= 1 1)`, true);
-  test(eva, `(>= 1 2)`, false);
   test(eva, `(= 1 1)`, true);
+  test(eva, `(print "Hello")`, undefined);
 };

@@ -186,12 +186,12 @@ const GlobalEnvironment = new Environment({
   "<"(op1, op2) {
     return op1 < op2;
   },
-  ">="(op1, op2) {
-    return op1 >= op2;
-  },
-  "<="(op1, op2) {
-    return op1 <= op2;
-  },
+  // ">="(op1, op2) {
+  //   return op1 >= op2;
+  // },
+  // "<="(op1, op2) {
+  //   return op1 <= op2;
+  // },
   "="(op1, op2) {
     return op1 === op2;
   },
