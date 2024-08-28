@@ -100,6 +100,16 @@ class Eva {
       return res;
     }
 
+    if (exp[0] === "def") {
+      const [_, name, params, body] = exp;
+      const fn = {
+        params,
+        body,
+        env, // closure
+      };
+      return env.define(name, fn);
+    }
+
     // ------------------------------
     // Function calls:
     // (print "Hello, World!")
@@ -120,9 +130,23 @@ class Eva {
 
       // 2. User-defined functions
       // TODO
+      const activationRecord = {};
+      fn.params.forEach((param, i) => {
+        activationRecord[param] = args[i];
+      });
+      const fnEnv = new Environment(activationRecord, fn.env);
+
+      return this._evalBody(fn.body, fnEnv);
     }
 
     throw `Not implemented: ${JSON.stringify(exp)}`;
+  }
+
+  _evalBody(body, env) {
+    if (body[0] === "begin") {
+      return this._evalBlock(body, env);
+    }
+    return this.eval(body, env);
   }
 
   _evalBlock(block, env) {
